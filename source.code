@@ -1,0 +1,35 @@
+import time
+import random  # For simulating sensor data
+
+# Hypothetical sensor library
+class WeatherSensor:
+    def read_temperature(self):
+        # Simulate reading temperature
+        return random.uniform(-10, 40)  # Temperature in Celsius
+    
+    def read_humidity(self):
+        # Simulate reading humidity
+        return random.uniform(0, 100)  # Humidity in percentage
+
+class WeatherMonitoringSystem:
+    def __init__(self):
+        self.sensor = WeatherSensor()
+    
+    def get_weather_data(self):
+        temperature = self.sensor.read_temperature()
+        humidity = self.sensor.read_humidity()
+        return temperature, humidity
+    
+    def display_data(self):
+        temperature, humidity = self.get_weather_data()
+        print(f"Temperature: {temperature:.2f}°C")
+        print(f"Humidity: {humidity:.2f}%")
+
+    def run(self):
+        while True:
+            self.display_data()
+            time.sleep(10)  # Wait for 10 seconds before taking another reading
+
+if __name__ == "__main__":
+    system = WeatherMonitoringSystem()
+    system.run()
